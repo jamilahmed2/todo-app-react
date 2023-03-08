@@ -10,9 +10,10 @@ const Home = () => {
     const handleShow = () => setShow(true);
 
     const saveTask = (taskObj) => {
-        let tempList = taskList
-        taskList.push(taskObj)
-        setTaskList(tempList)
+        let tempList = taskList;
+        taskList.push(taskObj);
+        localStorage.setItem("taskList",JSON.stringify(tempList));
+        setTaskList(tempList);
     }
     return (
         <>
