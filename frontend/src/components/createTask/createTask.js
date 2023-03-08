@@ -3,17 +3,27 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-const CreateTask = ({ handleClose, handleShow, show }) => {
+const CreateTask = ({ handleClose, handleShow, show, saveTask }) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
     const handleChange = (e) => {
         const { name, value } = e.target;
 
-        if(name === "taskName"){
+        if (name === "taskName") {
             setTaskName(value)
-        }else{
+        } else {
             setDescription(value)
         }
+    }
+
+    const handleSave = () => {
+        let taskObj = {}
+        taskObj["Name"] = taskName;
+        taskObj["Description"] = description;
+        saveTask(taskObj);
+        handleClose();
+        setTaskName('');
+        setDescription('');
     }
     return (
         <>
@@ -32,13 +42,10 @@ const CreateTask = ({ handleClose, handleShow, show }) => {
                             <Form.Label>Description</Form.Label>
                             <Form.Control name='description' as="textarea" placeholder="Task Description" value={description} onChange={handleChange} />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleSave}>
                         Create
                     </Button>
                     <Button variant="secondary" onClick={handleClose}>
