@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
-import CreateTask from '../createTask/createTask';
+import CreateTask from '../createTask/CreateTask';
 import '../../App.css'
 const Home = () => {
     const [show, setShow] = useState(false);
