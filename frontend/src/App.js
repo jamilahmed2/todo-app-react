@@ -1,8 +1,12 @@
 import './App.css';
+import Home from './components/Home/Home';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
-    <h1>todo react app complete</h1>
+    <div className="gradient-custom">
+      <Home/>
+    </div>
   );
 }
 
